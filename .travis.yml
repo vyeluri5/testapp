@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t vyeluri5/docker-travis-test -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true vyeluri5/docker-travis-test npm run test -- --coverage
